@@ -35,3 +35,24 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+body {
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+  font-family: 'Roboto Thin', sans-serif;
+}
+
+ion-toolbar {
+  --background: #0B0E18;
+  --color: var(--ion-color-primary);
+}
+
+ion-content {
+  --background: #0B0E18;
+}
+
+ion-button {
+  --background: var(--ion-color-secondary);
+  --color: #ffffff;
+  --border-radius: 6px;
+}
