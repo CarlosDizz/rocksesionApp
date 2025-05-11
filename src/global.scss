@@ -37,9 +37,13 @@
 @import '@ionic/angular/css/palettes/dark.system.css';
 
 body {
-  background-color: var(--ion-background-color);
+  background: linear-gradient(to bottom,#0B0E18 0%, #22285A 95%, #3C0E43 100%);
   color: var(--ion-text-color);
   font-family: 'Roboto Thin', sans-serif;
+}
+
+ion-content{
+  background: linear-gradient(to bottom,#0B0E18 0%, #22285A 95%, #3C0E43 100%);;
 }
 
 ion-toolbar {
@@ -47,12 +51,63 @@ ion-toolbar {
   --color: var(--ion-color-primary);
 }
 
-ion-content {
-  --background: #0B0E18;
-}
+
 
 ion-button {
-  --background: var(--ion-color-secondary);
-  --color: #ffffff;
-  --border-radius: 6px;
+  --background: linear-gradient(135deg, #1B2042, #3A478B);
+  --color: #fff;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 10px rgba(58, 71, 139, 0.4);
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding: 14px 0;
+  text-transform: uppercase;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:active {
+    transform: scale(1.02);
+    --box-shadow: 0 0 14px rgba(106, 138, 255, 0.6);
+    filter: brightness(1.1);
+  }
 }
+
+ion-input {
+  --background: rgba(255, 255, 255, 0.02);
+  --color: #D5D6E5;
+  --placeholder-color: #999;
+  --border-radius: 10px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --highlight-color-focused: #B041C6;
+
+  height: 44px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 8px;
+
+  border: 1px solid #3A3A4A;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: #B041C6;
+    box-shadow: 0 0 8px rgba(176, 65, 198, 0.4);
+  }
+}
+
+ion-input::part(native) {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+ion-input::part(native)::placeholder {
+  color: #999;
+  font-size: 30px;
+}
+.native-input.sc-ion-input-ios, .native-input.sc-ion-input-md {
+  padding:0 5%!important;
+}
+
+
