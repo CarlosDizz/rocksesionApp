@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {ApiService} from "../../services/api.service";
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
+import { Preferences } from '@capacitor/preferences';
+
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [IonicModule, FormsModule]
+  imports: [IonicModule, FormsModule, RouterModule]
 })
 export class LoginPage {
   email = '';
@@ -17,10 +19,13 @@ export class LoginPage {
 
   constructor(private api: ApiService, private router: Router) {}
 
-  login() {
+  async login() {
     this.api.login(this.email, this.password).subscribe({
-      next: (res: any) => {
-        localStorage.setItem('token', res.token);
+      next: async (res: any) => {
+        await Preferences.set({
+          key: 'auth_token',
+          value: res.token,
+        });
         this.router.navigateByUrl('/tabs');
       },
       error: () => {
@@ -28,4 +33,5 @@ export class LoginPage {
       }
     });
   }
+
 }
