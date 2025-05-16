@@ -20,4 +20,13 @@ export class ApiService {
 
     return this.http.get(`${this.baseUrl}/user`, { headers });
   }
+
+  register(name: string, email: string, password: string) {
+    return this.http.post(`${this.baseUrl}/register`, {
+      name,
+      email,
+      password
+    });
+  }
+
 }

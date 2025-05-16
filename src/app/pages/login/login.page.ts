@@ -4,6 +4,7 @@ import {ApiService} from "../../services/api.service";
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import { Preferences } from '@capacitor/preferences';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -11,7 +12,8 @@ import { Preferences } from '@capacitor/preferences';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [IonicModule, FormsModule, RouterModule]
+  imports: [IonicModule, FormsModule, RouterModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LoginPage {
   email = '';

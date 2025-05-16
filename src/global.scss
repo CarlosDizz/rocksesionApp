@@ -111,3 +111,7 @@ ion-input::part(native)::placeholder {
 }
 
 
+ion-back-button::part(native) {
+  text-transform: none;
+}
+

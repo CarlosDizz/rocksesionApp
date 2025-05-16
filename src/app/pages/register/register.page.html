@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding login-page" fullscreen>
+  <div class="logo-container">
+    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo" />
+  </div>
+
+  <form class="login-form" (submit)="register()">
+    <ion-input type="text" placeholder="Nombre" [(ngModel)]="name" name="name" required></ion-input>
+    <ion-input type="email" placeholder="Email" [(ngModel)]="email" name="email" required></ion-input>
+    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required></ion-input>
+    <ion-button expand="block" type="submit">Registrarme</ion-button>
+  </form>
+
+
 </ion-content>

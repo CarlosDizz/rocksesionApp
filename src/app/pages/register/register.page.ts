@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ApiService } from 'src/app/services/api.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
+  imports: [IonicModule, FormsModule, RouterModule],
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
+  name = '';
+  email = '';
+  password = '';
 
-  constructor() { }
+  constructor(private api: ApiService, private router: Router) {}
 
-  ngOnInit() {
+  register() {
+    this.api.register(this.name, this.email, this.password).subscribe({
+      next: () => {
+        alert('¡Usuario creado! Inicia sesión.');
+        this.router.navigateByUrl('/login');
+      },
+      error: () => {
+        alert('Error al registrar. ¿Email ya en uso?');
+      }
+    });
   }
-
 }
