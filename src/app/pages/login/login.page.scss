@@ -35,3 +35,38 @@
 }
 
 
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  --ion-toolbar-background: transparent;
+  box-shadow: none;
+  z-index: 10; // por si acaso hay overlays
+}
+
+ion-footer ion-button {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 20px;
+  width: auto;
+  margin: 8px auto;
+  display: block;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.register-link {
+  text-align: center;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+
+  a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bolder;
+  }
+}
+

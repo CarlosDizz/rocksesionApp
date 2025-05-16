@@ -1,42 +1,40 @@
-<!-- login.page.html -->
-<ion-page>
+<ion-header collapse="fade" translucent="true">
+  <ion-toolbar></ion-toolbar>
+</ion-header>
 
-  <ion-content class="ion-padding login-page">
-    <div class="logo-container">
-      <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo" />
-    </div>
+<ion-content [fullscreen]="true" class="login-page">
+  <div class="logo-container">
+    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo" />
+  </div>
 
-    <form class="login-form" (submit)="login()">
-      <ion-input
-        type="email"
-        placeholder="Email"
-        name="email"
-        [(ngModel)]="email"
-        required>
-      </ion-input>
+  <form class="login-form" (submit)="login()">
+    <ion-input
+      type="email"
+      placeholder="Email"
+      name="email"
+      [(ngModel)]="email"
+      required>
+    </ion-input>
 
-      <ion-input
-        type="password"
-        placeholder="Password"
-        name="password"
-        [(ngModel)]="password"
-        required>
-      </ion-input>
+    <ion-input
+      type="password"
+      placeholder="Password"
+      name="password"
+      [(ngModel)]="password"
+      required>
+    </ion-input>
 
-      <ion-button expand="block" type="submit">Entrar</ion-button>
-    </form>
-  </ion-content>
+    <ion-button expand="block" type="submit">Entrar</ion-button>
+  </form>
 
-  <!-- Pie fijo abajo -->
-  <ion-footer>
-    <ion-toolbar color="transparent">
-      <ion-button
-        routerLink="/register"
-        fill="clear"
-        expand="block">
-        ¿No tienes cuenta? Regístrate
-      </ion-button>
+  <ion-footer class="footer-absolute">
+    <ion-toolbar color="transparent" class="ion-no-border">
+      <div class="register-link">
+        ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+        <br>
+         GINETAROCK
+      </div>
     </ion-toolbar>
   </ion-footer>
 
-</ion-page>
+</ion-content>
