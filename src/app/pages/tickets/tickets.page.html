@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mis entradas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Entradas no usadas -->
+  <ng-container *ngIf="unusedTickets.length > 0">
+    <h2 class="section-title">Entradas disponibles</h2>
+    <ion-list>
+      <ion-item *ngFor="let ticket of unusedTickets" class="ticket-card unused">
+        <ion-label>
+          <h3>{{ ticket.event.name }}</h3>
+          <p>{{ ticket.event.date | date:'shortDate' }} - {{ ticket.price_range.type }}</p>
+        </ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button fill="clear" size="small" [routerLink]="['/app/tickets', ticket.token, 'qr']">
+            <ion-icon slot="icon-only" name="qr-code-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" [routerLink]="['/app/tickets', ticket.token, 'transfer']">
+            <ion-icon slot="icon-only" name="send-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+    </ion-list>
+  </ng-container>
+
+  <!-- Entradas usadas -->
+  <ng-container *ngIf="usedTickets.length > 0">
+    <h2 class="section-title">Entradas utilizadas</h2>
+    <ion-list>
+      <ion-item *ngFor="let ticket of usedTickets" class="ticket-card used">
+        <ion-label>
+          <h3>{{ ticket.event.name }}</h3>
+          <p>{{ ticket.event.date | date:'shortDate' }} - {{ ticket.price_range.type }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- Ninguna entrada -->
+  <ng-container *ngIf="!usedTickets.length && !unusedTickets.length && !loading">
+    <div class="empty-message">
+      <p>No tienes entradas registradas.</p>
+      <ion-button routerLink="/app/store" fill="outline" size="small" color="primary">
+        Ir a la tienda
+      </ion-button>
+    </div>
+  </ng-container>
+
+</ion-content>

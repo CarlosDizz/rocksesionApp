@@ -30,7 +30,24 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
+      },{
+        path: 'tickets',
+        loadComponent: () => import('./pages/tickets/tickets.page').then(m => m.TicketsPage),
+      },
+      {
+        path: 'tickets/:token/qr',
+        loadComponent: () =>
+            import('./pages/ticket-qr/ticket-qr.page').then(m => m.TicketQrPage),
       }
+
     ]
+  },
+  {
+    path: 'tickets',
+    loadComponent: () => import('./pages/tickets/tickets.page').then( m => m.TicketsPage)
+  },
+  {
+    path: 'ticket-qr',
+    loadComponent: () => import('./pages/ticket-qr/ticket-qr.page').then( m => m.TicketQrPage)
   }
 ];

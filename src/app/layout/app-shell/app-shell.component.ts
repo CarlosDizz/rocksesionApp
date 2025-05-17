@@ -8,7 +8,8 @@ import {
   IonItem,
   IonLabel,
   IonIcon,
-  IonRouterOutlet
+  IonRouterOutlet,
+  IonMenuToggle
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {homeOutline, personOutline, settingsOutline, ticketOutline} from "ionicons/icons";
@@ -32,7 +33,8 @@ addIcons({
     IonItem,
     IonLabel,
     IonIcon,
-    IonRouterOutlet
+    IonRouterOutlet,
+    IonMenuToggle,
   ],
   templateUrl: './app-shell.component.html',
   styleUrls: ['./app-shell.component.scss'],

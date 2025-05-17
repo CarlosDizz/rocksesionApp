@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tickets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Entrada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="qrImageUrl; else errorTemplate">
+    <img [src]="qrImageUrl" alt="QR entrada" class="qr-image" />
+  </div>
+
+  <ng-template #errorTemplate>
+    <div class="empty-message">
+      <p>No se pudo mostrar el QR de esta entrada.</p>
+    </div>
+  </ng-template>
+</ion-content>

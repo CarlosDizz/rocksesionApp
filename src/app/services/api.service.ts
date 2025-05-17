@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://swiftcontrol.alwaysdata.net/api'; // o localhost si estás en local
+  public baseUrl = 'https://swiftcontrol.alwaysdata.net/api'; // o localhost si estás en local
 
   constructor(private http: HttpClient) {}
 
@@ -28,5 +29,23 @@ export class ApiService {
       password
     });
   }
+
+  getTickets(token: string): Observable<any[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<any[]>(`${this.baseUrl}/tickets`, { headers });
+  }
+
+  getTicketByToken(tokenFile: string, token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(`${this.baseUrl}/media/${tokenFile}`, { headers });
+  }
+
+
+
 
 }
