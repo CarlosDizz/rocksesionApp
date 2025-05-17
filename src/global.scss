@@ -115,3 +115,19 @@ ion-back-button::part(native) {
   text-transform: none;
 }
 
+ion-menu {
+  --background: #0a0a0a;
+
+  ion-content {
+    --background: #0a0a0a !important;
+  }
+
+  ion-list,
+  ion-item {
+    --background: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+

@@ -1,0 +1,98 @@
+/* Cabecera del menú con logo */
+.menu-header {
+  height: 120px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-logo {
+  width: 160px;
+  height: 100%;
+  background-image: url('/assets/img/ginetarock-menu-header.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Contenido del menú */
+.menu-content {
+  --background: #0a0a0a;
+  padding-top: 12px;
+}
+
+/* Estilos del menú lateral */
+ion-menu {
+  --background: #0a0a0a;
+  border-right: 5px solid rgba(255, 255, 255, 0.05); // sutil para estructura
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.6); // profundidad sutil
+  backdrop-filter: blur(1px); // le da cuerpo al fondo degradado
+  z-index: 1000; // asegúrate de que esté por encima del contenido
+
+  ion-content {
+    --background: linear-gradient(to bottom, #0B0E18 0%, #22285A 85%, #3C0E43 100%) !important;
+  }
+
+  ion-list {
+    padding: 8px;
+  }
+
+  ion-item {
+    --background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    margin: 6px 0;
+    --min-height: 48px;
+    transition: all 0.25s ease;
+
+    ion-label {
+      font-size: 16px;
+      font-weight: 400;
+      color: #ffffff;
+    }
+
+    ion-icon {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    &.active {
+      background: rgba(74, 164, 255, 0.10);
+      border: 1px solid transparent;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 8px rgba(106, 138, 255, 0.3), 0 0 0 1px rgba(106, 138, 255, 0.3);
+      backdrop-filter: blur(2px);
+      transition: all 0.3s ease;
+
+      ion-label {
+        color: #ffffff;
+        font-weight: 500;
+      }
+
+      ion-icon {
+        color: #ffffff;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 10px;
+        padding: 1px;
+        background: linear-gradient(135deg, #4aa4ff, #b041c6);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+

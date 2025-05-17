@@ -28,7 +28,7 @@ export class LoginPage {
           key: 'auth_token',
           value: res.token,
         });
-        this.router.navigateByUrl('/tabs');
+        this.router.navigateByUrl('/app/home');
       },
       error: () => {
         alert('Credenciales incorrectas');

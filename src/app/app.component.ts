@@ -26,7 +26,7 @@ export class AppComponent {
     }
 
     if (token && currentPath === '/login') {
-      this.router.navigateByUrl('/tabs');
+      this.router.navigateByUrl('/app/home');
     }
   }
 
