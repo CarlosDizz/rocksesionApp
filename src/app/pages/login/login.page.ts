@@ -1,19 +1,32 @@
 import { Component } from '@angular/core';
-import {Router, RouterModule} from '@angular/router';
-import {ApiService} from "../../services/api.service";
-import {IonicModule} from "@ionic/angular";
-import {FormsModule} from "@angular/forms";
+import { Router, RouterModule } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import {
+  IonHeader,
+  IonToolbar,
+  IonContent,
+  IonInput,
+  IonButton,
+  IonFooter
+} from '@ionic/angular/standalone';
+import { FormsModule } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [IonicModule, FormsModule, RouterModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  standalone: true,
+  imports: [
+    FormsModule,
+    RouterModule,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonInput,
+    IonButton,
+    IonFooter
+  ],
 })
 export class LoginPage {
   email = '';
@@ -35,5 +48,4 @@ export class LoginPage {
       }
     });
   }
-
 }
