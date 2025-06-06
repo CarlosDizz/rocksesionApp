@@ -7,7 +7,7 @@ import {
   IonContent,
   IonInput,
   IonButton,
-  IonFooter
+  IonFooter, IonItem, IonLabel
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
@@ -20,8 +20,8 @@ import { Preferences } from '@capacitor/preferences';
   imports: [
     FormsModule,
     RouterModule,
-    IonHeader,
-    IonToolbar,
+    IonItem,
+    IonLabel,
     IonContent,
     IonInput,
     IonButton,

@@ -1,41 +1,36 @@
-<ion-header collapse="fade" translucent="true">
-  <ion-toolbar></ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" class="login-page">
-  <div class="logo-container">
-    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo" />
+<ion-content class="login-page" [fullscreen]="true">
+  <!-- Logo visible arriba -->
+  <div class="logo-top">
+    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo">
   </div>
 
-  <form class="login-form" (submit)="login()">
-    <ion-input
-      type="email"
-      placeholder="Email"
-      name="email"
-      [(ngModel)]="email"
-      required>
-    </ion-input>
+  <!-- Watermark opcional ↓  (mantiene un leve fondo épico) -->
+  <div class="logo-bg"></div>
 
-    <ion-input
-      type="password"
-      placeholder="Password"
-      name="password"
-      [(ngModel)]="password"
-      required>
-    </ion-input>
+  <!-- Tarjeta con formulario -->
+  <form class="login-card" (ngSubmit)="login()" #f="ngForm">
+    <h2>Inicia sesión</h2>
 
-    <ion-button expand="block" type="submit">Entrar</ion-button>
-  </form>
-</ion-content>
+    <ion-item lines="none" class="login-item">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input name="email" type="email" [(ngModel)]="email"
+                 inputmode="email" required autocapitalize="none"></ion-input>
+    </ion-item>
 
-<ion-footer class="footer-absolute">
-  <ion-toolbar color="transparent" class="ion-no-border">
-    <div class="register-link">
+    <ion-item lines="none" class="login-item">
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input name="password" type="password"
+                 [(ngModel)]="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!f.valid">
+      Entrar
+    </ion-button>
+
+    <p class="register-link">
       ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
-      <br>
-      GINETAROCK
-      <br>
-      -
-    </div>
-  </ion-toolbar>
-</ion-footer>
+    </p>
+  </form>
+
+  <div class="bottom-gradient"></div>
+</ion-content>

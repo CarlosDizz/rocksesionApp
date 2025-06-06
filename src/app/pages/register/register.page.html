@@ -1,51 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/login" text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="login-page keyboard-scroll" [fullscreen]="true">
 
-<ion-content class="ion-padding login-page">
-  <div class="logo-container">
-    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo" />
+  <!-- Logo superior -->
+  <div class="logo-top">
+    <img src="assets/img/logo-gtp.webp" alt="RockSessions Logo">
   </div>
 
-  <form class="login-form" (submit)="register()">
-    <ion-input
-      type="text"
-      placeholder="Nombre"
-      [(ngModel)]="name"
-      name="name"
-      required>
-    </ion-input>
+  <!-- Watermark opcional -->
+  <div class="logo-bg"></div>
 
-    <ion-input
-      type="email"
-      placeholder="Email"
-      [(ngModel)]="email"
-      name="email"
-      required>
-    </ion-input>
+  <!-- Tarjeta Glass -->
+  <form class="login-card" (ngSubmit)="register()" #f="ngForm">
+    <h2>Crear cuenta</h2>
 
-    <ion-input
-      type="password"
-      placeholder="Contraseña"
-      [(ngModel)]="password"
-      name="password"
-      required>
-    </ion-input>
+    <!-- Nombre -->
+    <ion-item class="login-item" lines="none">
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="name" required></ion-input>
+    </ion-item>
 
-    <ion-button expand="block" type="submit">Registrarme</ion-button>
+    <!-- Email -->
+    <ion-item class="login-item" lines="none">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="email" required></ion-input>
+    </ion-item>
+
+    <!-- Contraseña -->
+    <ion-item class="login-item" lines="none">
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+
+    <!-- Confirmación -->
+    <ion-item class="login-item" lines="none">
+      <ion-label position="stacked">Repite contraseña</ion-label>
+      <ion-input type="password" name="password2" [(ngModel)]="password2" required></ion-input>
+    </ion-item>
+
+    <!-- Botón -->
+    <ion-button expand="block" type="submit" [disabled]="!f.valid">
+      Registrarse
+    </ion-button>
+
+    <!-- Enlace -->
+    <p class="register-link">
+      ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+    </p>
   </form>
 </ion-content>
-
-<!-- (opcional) footer si quieres dejarlo listo -->
-<ion-footer class="footer-absolute">
-  <ion-toolbar color="transparent" class="ion-no-border">
-    <div class="register-link" style="text-align: center;">
-      Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
-    </div>
-  </ion-toolbar>
-</ion-footer>

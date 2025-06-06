@@ -1,73 +1,120 @@
+/* ------------------ CONTENEDOR ------------------ */
 .login-page {
-  min-height: 100%;
-  max-height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%; // fuerza que ocupe todo
-  overflow: hidden; // evita scroll inesperado
+  min-height: 100%;
+  overflow-y: auto;
+  background: #070c18;
+  padding-bottom: env(safe-area-inset-bottom);
+}
 
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120%;
-    margin-left: -10%;
+/* ---------- LOGO ARRIBA (100 % ancho, recortado centrado) ---------- */
+.logo-top {
+  position: relative;
+  width: 100%;
+  height: 40vh;          /* alto del banner (ajústalo 35-45 vh a tu gusto) */
+  overflow: hidden;      /* recorta la imagen si se pasa */
+  z-index: 0;            /* queda detrás de la tarjeta */
 
-
-    img {
-      width: 150%;
-      height: auto;
-
-    }
-  }
-
-  .login-form {
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* centra la imagen */
     width: 100%;
-    gap: 16px;
-    bottom:0;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
+    height: auto;
+    max-width: none;     /* para que no se limite */
   }
 }
 
 
-ion-footer {
+
+
+/* ---------- LOGO WATERMARK SUAVE ---------- */
+.logo-bg {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  --ion-toolbar-background: transparent;
-  box-shadow: none;
-  z-index: 10; // por si acaso hay overlays
+  inset: 0;
+  background: url('/assets/img/logo-gtp.webp') center/80% no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
 }
 
-ion-footer ion-button {
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 20px;
-  width: auto;
-  margin: 8px auto;
-  display: block;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  bottom: 30px;
+/* ---------- TARJETA ---------- */
+.login-card {
+  position: relative;
+  z-index: 1;                 /* por encima del logo */
+  width: calc(100% - 32px);
+  max-width: 420px;
+  /* 🔽 Sube la tarjeta unos px para que “pise” el logo */
+  margin: -80px auto 40px;    /* <— valor negativo = superposición */
+  padding: 28px 24px 36px;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #fff;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
 }
 
+/* ---------- CAMPOS ---------- */
+.login-item {
+  --background: transparent;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --highlight-height: 0;
+  --min-height: 60px;
+
+  ion-label {
+    font-size: 14px;
+    color: rgba(255,255,255,.85);
+    margin-bottom: 4px;
+  }
+
+  ion-input {
+    --background: rgba(255,255,255,.13);
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --color: #fff;
+    --placeholder-color: rgba(255,255,255,.55);
+    border-radius: 10px;
+    font-size: 16px;
+  }
+}
+
+/* ---------- BOTÓN ---------- */
+ion-button {
+  height: 48px;
+  --background: linear-gradient(90deg,#6a3ad5 0%,#e049ff 100%);
+  --background-activated: linear-gradient(90deg,#7550d9 0%,#ea5dff 100%);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  letter-spacing: .5px;
+}
+
+/* ---------- ENLACE ---------- */
 .register-link {
+  margin-top: 8px;
   text-align: center;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: bold;
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
 
   a {
-    color: white;
+    color: #fff;
     text-decoration: underline;
-    font-weight: bolder;
+    font-weight: 600;
   }
 }
 
